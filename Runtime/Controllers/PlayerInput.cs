@@ -16,10 +16,12 @@ namespace GameplayIngredients.Controllers
 
         public abstract Vector2 Look { get; }
         public abstract Vector2 Movement { get; }
-        public abstract ButtonState Jump { get; }
 
+        public abstract ButtonState Jump { get; }
         public abstract void UpdateInput();
 
+#if USE_INPUT_SYSTEM
+#else
         protected static ButtonState GetButtonState(string Button)
         {
             if (Input.GetButton(Button))
@@ -38,5 +40,6 @@ namespace GameplayIngredients.Controllers
 
             }
         }
+#endif
     }
 }
